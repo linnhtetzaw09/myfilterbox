@@ -17,7 +17,8 @@ getinput.addEventListener('keyup',filter);
 
 getsortazm1.addEventListener('click',sortingazm1);
 getsortzam1.addEventListener('click',sortingzam1);
-
+getsortazm2.addEventListener('click',sortingazm2);
+getsortzam2.addEventListener('click',sortingzam2);
 
 function filter(){
 
@@ -112,3 +113,73 @@ function sortingzam1(){
     )
 }
 
+//Method 3
+
+function sortingazm2(){
+
+    let shouldswitch = true;
+    let switching = true;
+
+    // console.log(getlis.length);     //30
+
+    while(switching){
+
+        switching = false;
+
+        let i;
+        for(i=0;i < getlis.length - 1; i++){
+            // console.log(i);     //0 to 28
+
+            shouldswitch = false;
+
+            if(getlis[i].textContent.toLocaleLowerCase() > getlis[i+1].textContent.toLocaleLowerCase()){
+                shouldswitch = true;
+                break;
+            }
+        }
+
+        // console.log(i);     //29
+
+        if(shouldswitch){
+            // parent.insertBefore(new,existing)
+            getlis[i].parentElement.insertBefore(getlis[i+1],getlis[i]);
+            switching = true;
+        }
+
+    }
+
+}
+
+//Method 4
+
+function sortingzam2(){
+
+    let shouldswitch = true;
+    let switching = true;
+
+    // console.log(getlis.length);     //30
+
+    while(switching){
+
+        switching = false;
+
+        let i;
+        for(i=0;i < getlis.length - 1; i++){
+
+            shouldswitch = false;
+
+            if(getlis[i].textContent.toLocaleLowerCase() < getlis[i+1].textContent.toLocaleLowerCase()){
+                shouldswitch = true;
+                break;
+            }
+        }
+
+        if(shouldswitch){
+            getlis[i].parentElement.insertBefore(getlis[i+1],getlis[i]);
+            switching = true;
+        }
+
+    }
+
+    
+}
